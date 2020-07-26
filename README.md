@@ -15,7 +15,7 @@ mvn test
 ```
 
 
-As of now we have two below tests:
+As of now we have three below tests:
 1. Generate a new Deck api should give 200 response code with a deck id
 2. Using a deck id, user is able to draw cards.
 3. After successful drawing 1 of the cards from a 52 card deck, remaining cards in response should be 51
