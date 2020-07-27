@@ -43,4 +43,18 @@ public class SampleTest {
         System.out.println(response.jsonPath().getString("cards"));
 
     }
+
+    @Test
+    public void AddTwoJokersToDeckAndValidateDeckSizeShouldBe54(){
+        System.out.println("*************Hello AddTwoJokersToDeckAndValidateDeckSizeShouldBe54 new test*************");
+        GoRequest request = new GoRequest.Builder("/api/deck/new", MethodType.GET).queryParam("jokers_enabled","true")
+                .build();
+        GoResponse response = request.execute(Services.DeckOfCards, ExpectedResponseTypes.OK);
+        System.out.println(response.jsonPath().getBoolean("success"));
+        System.out.println("Asserting 200 response code");
+        Assert.assertEquals(200,response.getHttpStatusCode()); //Asserting 200 response code
+        System.out.println("Asserting remaining cards from new deck should be 54");
+        Assert.assertEquals(54,response.jsonPath().getInt("remaining")); //Asserting remaining cards from deck
+
+    }
 }
